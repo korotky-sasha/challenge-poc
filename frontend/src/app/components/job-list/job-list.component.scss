@@ -1,0 +1,48 @@
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error-message {
+  border: 1px solid red;
+}
+
+.job {
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+}
+
+.job-list {
+  width: 75%;
+}
+
+.add-form-container {
+  position: fixed;
+  width: 100%;
+}
+
+.add-form {
+  width: 25%;
+  margin-left: 75%;
+}
+
+.label {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+
+.input {
+  margin-right: 10px;
+}
+
+.fill-available {
+  width: -webkit-fill-available;
+}

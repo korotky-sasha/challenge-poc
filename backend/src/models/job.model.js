@@ -15,6 +15,7 @@ module.exports = function (app) {
       allowNull: false
     }
   }, {
+    timestamps: false,
     hooks: {
       beforeCount(options) {
         options.raw = true;

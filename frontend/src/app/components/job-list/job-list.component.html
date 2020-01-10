@@ -1,0 +1,42 @@
+<div class="add-form-container">
+  <div class="add-form">
+    <form [formGroup] = form (ngSubmit)="onSubmit()">
+      <div class="col">
+        <label class="label">
+          <span class="fill-available">Title:</span>
+          <input type="text" class="input" formControlName="title" placeholder="Job title" required>
+        </label>
+        <div
+          *ngIf="form.controls.title.invalid && (form.controls.title.dirty || form.controls.title.touched)"
+          class="error-message"
+        >
+          This field is required
+        </div>
+        <label class="label">
+          <span class="fill-available">Description:</span>
+          <input type="text" class="input" formControlName="description" placeholder="Job description" required>
+        </label>
+        <div
+          *ngIf="form.controls.description.invalid && (form.controls.description.dirty || form.controls.description.touched)"
+          class="error-message"
+        >
+          This field is required
+        </div>
+        <button type="submit" class="button" [disabled]="form.invalid">Add job</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="job-list">
+  <div *ngIf="jobs && jobs.length !== 0">
+    <div *ngFor="let job of jobs" class="job">
+      <p>{{job.title}}</p>
+      <p>{{job.description}}</p>
+      <button (click)="deleteJob(job.id)">Delete</button>
+    </div>
+  </div>
+  <div *ngIf="!jobs || jobs.length === 0">
+    No jobs, please add new jobs to display.
+  </div>
+</div>

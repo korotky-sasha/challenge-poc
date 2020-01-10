@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { ExampleService } from './services/example.service';
 
 @Component({
@@ -10,10 +12,19 @@ export class AppComponent {
   title = 'frontend';
 
   constructor(
-    private exampleService: ExampleService
+    // private exampleService: ExampleService,
+    private router: Router
     ) {
-      setTimeout(() => {
+      /*setTimeout(() => {
         this.exampleService.showExample();
-      }, 500);
+      }, 500);*/
     }
+
+  goToJobs() {
+    this.router.navigate(['/job']);
+  }
+
+  goToUsers() {
+    this.router.navigate(['/user']);
+  }
 }
