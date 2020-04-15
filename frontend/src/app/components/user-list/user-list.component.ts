@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { UserListService } from '../../services/user-list.service';
+import { UserService } from "../../services/user.service";
 import { User, Response } from '../../shared/models/user';
 
 
@@ -21,13 +22,14 @@ export class UserListComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject();
 
   constructor(
-    private userListService: UserListService,
+    private router: Router,
+    private userService: UserService,
     private formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {
     this.buildForm();
-    this.users$ = this.userListService.getUsers();
+    this.users$ = this.userService.getUsers();
     this.users$
       .pipe(
         takeUntil(this.ngUnsubscribe)
@@ -45,7 +47,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   private buildForm(): void {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       status: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
       hourlyRate: ['', Validators.required]
@@ -53,7 +55,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.userListService.addUser(this.form.value)
+    this.userService.addUser(this.form.value)
       .pipe(
         takeUntil(this.ngUnsubscribe)
       )
@@ -63,13 +65,25 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   deleteUser(id) {
-    this.userListService.deleteUser(id)
+    this.userService.deleteUser(id)
       .pipe(
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe(value => {
         this.users = this.users.filter(user => user.id !== value.id);
       });
+  }
+
+  goToDetails(id) {
+    this.router.navigate([`user/${id}`]);
+  }
+
+  goToEdit(id) {
+    this.router.navigate([`user/edit/${id}`]);
+  }
+
+  isControlInvalid(control: AbstractControl) {
+    return control.invalid && (control.dirty || control.touched)
   }
 
 }

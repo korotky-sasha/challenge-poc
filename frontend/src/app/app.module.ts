@@ -9,12 +9,20 @@ import { httpInterceptorProviders } from './core/http-interceptors';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { JobListComponent } from './components/job-list/job-list.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { JobDetailsComponent } from './components/job-details/job-details.component';
+import { JobEditComponent } from './components/job-edit/job-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    JobListComponent
+    JobListComponent,
+    UserDetailsComponent,
+    UserEditComponent,
+    JobDetailsComponent,
+    JobEditComponent
   ],
   imports: [
     BrowserModule,

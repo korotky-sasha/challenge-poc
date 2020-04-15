@@ -1,0 +1,11 @@
+<div *ngIf="user">
+  <p>Name: {{user.name}}</p>
+  <p>Gender:  {{user.status}}</p>
+  <p>Date of birth: {{user.dateOfBirth | date}}</p>
+  <p>Email: {{user.email}}</p>
+  <p>Hourly rate: {{user.hourlyRate}}</p>
+  <button (click)="goToEdit()">Edit</button>
+</div>
+<div *ngIf="!user">
+  No such user.
+</div>

@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { Job, Response } from '../../shared/models/job';
-import { JobListService } from '../../services/job-list.service';
+import { JobService } from "../../services/job.service";
 
 @Component({
   selector: 'app-job-list',
@@ -20,13 +21,14 @@ export class JobListComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject();
 
   constructor(
-    private jobListService: JobListService,
+    private router: Router,
+    private jobService: JobService,
     private formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {
     this.buildForm();
-    this.jobs$ = this.jobListService.getJobs();
+    this.jobs$ = this.jobService.getJobs();
     this.jobs$
       .pipe(
         takeUntil(this.ngUnsubscribe)
@@ -49,7 +51,7 @@ export class JobListComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.jobListService.addJob(this.form.value)
+    this.jobService.addJob(this.form.value)
       .pipe(
         takeUntil(this.ngUnsubscribe)
       )
@@ -59,13 +61,25 @@ export class JobListComponent implements OnInit, OnDestroy {
   }
 
   deleteJob(id) {
-    this.jobListService.deleteJob(id)
+    this.jobService.deleteJob(id)
       .pipe(
         takeUntil(this.ngUnsubscribe)
       )
       .subscribe(value => {
         this.jobs = this.jobs.filter(job => job.id !== value.id);
       });
+  }
+
+  goToDetails(id) {
+    this.router.navigate([`job/${id}`]);
+  }
+
+  goToEdit(id) {
+    this.router.navigate([`job/edit/${id}`]);
+  }
+
+  isControlInvalid(control: AbstractControl) {
+    return control.invalid && (control.dirty || control.touched)
   }
 
 }

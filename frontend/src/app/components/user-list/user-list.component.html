@@ -7,7 +7,7 @@
           <input type="text" class="input" formControlName="name" placeholder="Name" required>
         </label>
         <div
-          *ngIf="form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched)"
+          *ngIf="isControlInvalid(form.controls.name)"
           class="error-message"
         >
           This field is required
@@ -17,10 +17,10 @@
           <input type="email" class="input" formControlName="email" placeholder="Email" required>
         </label>
         <div
-          *ngIf="form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)"
+          *ngIf="isControlInvalid(form.controls.email)"
           class="error-message"
         >
-          This field is required
+          This field is empty or invalid
         </div>
         <label class="label">
           <span class="fill-available">Gender:</span>
@@ -31,7 +31,7 @@
           </select>
         </label>
         <div
-          *ngIf="form.controls.status.invalid && (form.controls.status.dirty || form.controls.status.touched)"
+          *ngIf="isControlInvalid(form.controls.status)"
           class="error-message"
         >
           This field is required
@@ -41,7 +41,7 @@
           <input type="date" class="input fill-available" formControlName="dateOfBirth" required>
         </label>
         <div
-          *ngIf="form.controls.dateOfBirth.invalid && (form.controls.dateOfBirth.dirty || form.controls.dateOfBirth.touched)"
+          *ngIf="isControlInvalid(form.controls.dateOfBirth)"
           class="error-message"
         >
           This field is required
@@ -51,7 +51,7 @@
           <input type="number" class="input" formControlName="hourlyRate" placeholder="Hourly rate" required>
         </label>
         <div
-          *ngIf="form.controls.hourlyRate.invalid && (form.controls.hourlyRate.dirty || form.controls.hourlyRate.touched)"
+          *ngIf="isControlInvalid(form.controls.hourlyRate)"
           class="error-message"
         >
           This field is required
@@ -65,11 +65,10 @@
   <div *ngIf="users && users.length !== 0">
     <div *ngFor="let user of users" class="user">
       <p>Name: {{user.name}}</p>
-      <p>Gender:  {{user.status}}</p>
-      <p>Date of birth: {{user.dateOfBirth | date}}</p>
       <p>Email: {{user.email}}</p>
-      <p>Hourly rate: {{user.hourlyRate}}</p>
       <button (click)="deleteUser(user.id)">Delete</button>
+      <button (click)="goToDetails(user.id)">Details</button>
+      <button (click)="goToEdit(user.id)">Edit</button>
     </div>
   </div>
   <div *ngIf="!users || users.length === 0">

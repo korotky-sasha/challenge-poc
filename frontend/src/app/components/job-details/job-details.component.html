@@ -1,0 +1,8 @@
+<div *ngIf="job">
+  <p>Name: {{job.title}}</p>
+  <p>Gender:  {{job.description}}</p>
+  <button (click)="goToEdit()">Edit</button>
+</div>
+<div *ngIf="!job">
+  No such job.
+</div>

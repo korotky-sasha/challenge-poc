@@ -7,7 +7,7 @@
           <input type="text" class="input" formControlName="title" placeholder="Job title" required>
         </label>
         <div
-          *ngIf="form.controls.title.invalid && (form.controls.title.dirty || form.controls.title.touched)"
+          *ngIf="isControlInvalid(form.controls.title)"
           class="error-message"
         >
           This field is required
@@ -17,7 +17,7 @@
           <input type="text" class="input" formControlName="description" placeholder="Job description" required>
         </label>
         <div
-          *ngIf="form.controls.description.invalid && (form.controls.description.dirty || form.controls.description.touched)"
+          *ngIf="isControlInvalid(form.controls.description)"
           class="error-message"
         >
           This field is required
@@ -34,6 +34,8 @@
       <p>{{job.title}}</p>
       <p>{{job.description}}</p>
       <button (click)="deleteJob(job.id)">Delete</button>
+      <button (click)="goToDetails(job.id)">Details</button>
+      <button (click)="goToEdit(job.id)">Edit</button>
     </div>
   </div>
   <div *ngIf="!jobs || jobs.length === 0">
