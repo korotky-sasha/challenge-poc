@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { Job, Response } from '../../shared/models/job';
-import { JobService } from "../../services/job.service";
+import { JobService } from '../../services/job.service';
 
 @Component({
   selector: 'app-job-list',
@@ -79,7 +79,7 @@ export class JobListComponent implements OnInit, OnDestroy {
   }
 
   isControlInvalid(control: AbstractControl) {
-    return control.invalid && (control.dirty || control.touched)
+    return control.invalid && (control.dirty || control.touched);
   }
 
 }

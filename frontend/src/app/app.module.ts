@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { httpInterceptorProviders } from './core/http-interceptors';
+import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { UserListComponent } from './components/user-list/user-list.component';
@@ -13,6 +14,8 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { JobDetailsComponent } from './components/job-details/job-details.component';
 import { JobEditComponent } from './components/job-edit/job-edit.component';
+import { HeaderComponent } from './components/header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,13 +25,16 @@ import { JobEditComponent } from './components/job-edit/job-edit.component';
     UserDetailsComponent,
     UserEditComponent,
     JobDetailsComponent,
-    JobEditComponent
+    JobEditComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    SharedModule
   ],
   providers: [
     httpInterceptorProviders

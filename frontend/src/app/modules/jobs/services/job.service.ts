@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { FeathersService } from '../shared/services/feathers.service';
-import { Job } from '../shared/models/job';
+
 import { from, Observable } from 'rxjs';
+import { FeathersService } from '../../../shared/services/feathers.service';
+import { Job } from '../../../shared/models/job';
 
 
 @Injectable({

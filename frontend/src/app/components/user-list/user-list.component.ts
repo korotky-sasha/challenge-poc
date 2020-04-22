@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { UserService } from "../../services/user.service";
+import { UserService } from '../../services/user.service';
 import { User, Response } from '../../shared/models/user';
 
 
@@ -50,7 +50,7 @@ export class UserListComponent implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.email]],
       status: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
-      hourlyRate: ['', Validators.required]
+      hourlyRate: ['', [Validators.required, Validators.min(0)]]
     });
   }
 
@@ -83,7 +83,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   isControlInvalid(control: AbstractControl) {
-    return control.invalid && (control.dirty || control.touched)
+    return control.invalid && (control.dirty || control.touched);
   }
 
 }

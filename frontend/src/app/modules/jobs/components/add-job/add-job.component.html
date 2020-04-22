@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Create Job</h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div mat-dialog-content class="col">
+    <mat-form-field class="w-100">
+      <input matInput formControlName="title" placeholder="Title of Job">
+      <mat-error *ngIf="isControlInvalid(form.controls.title)">This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <input matInput formControlName="description" placeholder="Description of Job">
+      <mat-error *ngIf="isControlInvalid(form.controls.description)">This field is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button type="button" (click)="close()">Cancel</button>
+    <button mat-raised-button color="primary" [disabled]="form.invalid || form.untouched" type="submit">
+      Ok
+    </button>
+  </div>
+</form>

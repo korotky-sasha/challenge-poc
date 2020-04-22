@@ -1,0 +1,34 @@
+<div class="center">
+  <button mat-raised-button color="primary" (click)="addUser()">Add new user</button>
+</div>
+<table>
+  <thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Gender</th>
+    <th scope="col">Date of birth</th>
+    <th scope="col">Hourly rate</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td>{{user.id}}</td>
+    <td>{{user.name}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.status}}</td>
+    <td>{{user.dateOfBirth | date}}</td>
+    <td>{{user.hourlyRate}}</td>
+    <td>
+      <button mat-icon-button color="warn" (click)="deleteUser(user)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button (click)="editUser(user)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

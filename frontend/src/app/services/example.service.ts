@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { FeathersService } from '../shared/feathers.service';
+import { FeathersService } from '../shared/services/feathers.service';
 
 
 interface JobModel {

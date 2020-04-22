@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { FeathersService } from '../shared/services/feathers.service';
-import { User } from '../shared/models/user';
+
 import { from, Observable } from 'rxjs';
+import { FeathersService } from '../../../shared/services/feathers.service';
+import { User } from '../../../shared/models/user';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class UserService {
 
   constructor(
     private feathers: FeathersService
-  ) {}
+  ) { }
 
   getUsers(): Observable<any> {
     return from<any>(this.feathers.createService<User>('user').find());

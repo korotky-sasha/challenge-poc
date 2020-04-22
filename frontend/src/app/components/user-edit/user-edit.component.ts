@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from "@angular/router";
-import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router, ActivatedRoute } from '@angular/router';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Observable } from "rxjs";
-import { take } from "rxjs/operators";
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
-import { UserService } from "../../services/user.service";
-import { User } from "../../shared/models/user";
+import { UserService } from '../../services/user.service';
+import { User } from '../../shared/models/user';
 
 
 @Component({
@@ -42,7 +42,7 @@ export class UserEditComponent implements OnInit {
 
   private buildForm(): void {
     const date = new Date(this.user.dateOfBirth);
-    const dateTransformed = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
+    const dateTransformed = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
     this.form = this.formBuilder.group({
       name: [this.user.name, Validators.required],
       email: [this.user.email, [Validators.required, Validators.email]],
@@ -64,7 +64,7 @@ export class UserEditComponent implements OnInit {
   }
 
   isControlInvalid(control: AbstractControl) {
-    return control.invalid && (control.dirty || control.touched)
+    return control.invalid && (control.dirty || control.touched);
   }
 
 }

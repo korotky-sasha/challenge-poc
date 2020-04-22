@@ -1,0 +1,28 @@
+<div class="center">
+  <button mat-raised-button color="primary" (click)="addJob()">Add new job</button>
+</div>
+<table>
+  <thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">Title</th>
+    <th scope="col">Description</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let job of jobs">
+    <td>{{job.id}}</td>
+    <td>{{job.title}}</td>
+    <td>{{job.description}}</td>
+    <td>
+      <button mat-icon-button color="warn" (click)="deleteJob(job)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button (click)="editJob(job)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
