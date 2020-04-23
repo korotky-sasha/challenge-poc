@@ -19,10 +19,6 @@ export class JobService {
     return from<any>(this.feathers.createService<Job>('job').find());
   }
 
-  getJob(id: number): Observable<any> {
-    return from<any>(this.feathers.createService<Job>('job').get(id));
-  }
-
   updateJob(id: number, job: Job): Observable<any> {
     return from<any>(this.feathers.createService<Job>('job').update(id, job));
   }

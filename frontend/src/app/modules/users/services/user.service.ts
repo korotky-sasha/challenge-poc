@@ -19,10 +19,6 @@ export class UserService {
     return from<any>(this.feathers.createService<User>('user').find());
   }
 
-  getUser(id: number): Observable<any> {
-    return from<any>(this.feathers.createService<User>('user').get(id));
-  }
-
   updateUser(id: number, user: User): Observable<any> {
     return from<any>(this.feathers.createService<User>('user').update(id, user));
   }

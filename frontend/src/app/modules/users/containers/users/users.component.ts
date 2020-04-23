@@ -18,7 +18,8 @@ import { User, Response } from '../../../../shared/models/user';
 })
 export class UsersComponent implements OnInit {
   private users$: Observable<Response>;
-  private users: User[];
+  users: User[];
+  displayedColumns: string[] = ['id', 'name', 'email', 'status', 'dateOfBirth', 'hourlyRate', 'actions'];
 
   constructor(
     private router: Router,

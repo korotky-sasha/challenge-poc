@@ -18,7 +18,8 @@ import { Job, Response } from '../../../../shared/models/job';
 })
 export class JobsComponent implements OnInit {
   private jobs$: Observable<Response>;
-  private jobs: Job[];
+  jobs: Job[];
+  displayedColumns: string[] = ['id', 'title', 'description', 'actions'];
 
   constructor(
     private router: Router,

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
+  MatTableModule,
   MatToolbarModule,
   MatButtonModule,
   MatIconModule,
@@ -19,6 +20,7 @@ import { SnackService } from './services/snack.service';
   declarations: [ConfirmModalComponent],
   exports: [
     ReactiveFormsModule,
+    MatTableModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -29,6 +31,7 @@ import { SnackService } from './services/snack.service';
   ],
   imports: [
     CommonModule,
+    MatTableModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
